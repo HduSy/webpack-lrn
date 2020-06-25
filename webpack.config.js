@@ -6,7 +6,7 @@ const Webpack = require('webpack')
 module.exports = {
     // or 'development'
     mode: 'production',
-    stats: 'errors-only',
+    // stats: 'errors-only',
     // fast develop application
     devServer: {
         port: 3000,
@@ -25,6 +25,13 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
+    // source map config(eval、source-map、cheap、inline、module)
+    // eval 不生成.map 文件但是在每个模块后面执行eval将.map以DataURL的形式打包进模块，增加模块体积
+    // source-map 生成.map
+    // module 模块间的source map
+    // cheap 忽略列信息
+    // inline 
+    devtool:'cheap-module-source-map',
     plugins: [
         // simplify creation of html serving for bundle.js
         new HtmlWebpackPlugin({
