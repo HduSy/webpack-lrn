@@ -6,6 +6,7 @@ const Webpack = require('webpack')
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin') //clean/remove build folder files
+const CopyWebpackPlugin = require('copy-webpack-plugin') //copy individual files or dirs to build folder
 module.exports = {
     // or 'development'
     mode: 'production',
@@ -72,7 +73,13 @@ module.exports = {
         new Webpack.ProvidePlugin({
             $: 'jquery'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: 'docs',
+                to: './'
+            }]
+        })
     ],
     // ignore the dependencies in bundleJs
     externals: {
