@@ -1,4 +1,4 @@
-import 'bootstrap'
+// import 'bootstrap' //±¨´í
 require('./index.sass')
 // import './home'
 // import './other'
@@ -18,3 +18,6 @@ xhr.onload = function () {
     console.log(xhr.response);
 }
 xhr.send()
+// define global variables
+console.log(DEV)
+console.log(FLAG)
