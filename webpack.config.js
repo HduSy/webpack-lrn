@@ -7,11 +7,15 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin') //clean/remove build folder files
 const CopyWebpackPlugin = require('copy-webpack-plugin') //copy individual files or dirs to build folder
+const {
+    json
+} = require('express')
+const webpack = require('webpack')
 // bannerPlugin 内置 版权声明
 module.exports = {
     // or 'development'
     mode: 'production',
-    // stats: 'errors-only',
+    stats: 'errors-only',
     // fast develop application
     devServer: {
         port: 8080,
@@ -65,7 +69,15 @@ module.exports = {
         aggregateTimeout: 600,
         ignored: /node_modules/
     },
-
+    resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')],
+        extensions: ['.js', '.css', '.json', '.vue'],
+        // mainFields: ['style', 'main'],
+        // mainFiles:[],
+        alias: {
+            bootstrap: 'bootstrap/dist/css/bootstrap.css'
+        }
+    },
     plugins: [
         // simplify creation of html serving for bundle.js
         new HtmlWebpackPlugin({
@@ -104,8 +116,10 @@ module.exports = {
             }]
         }),
         new Webpack.BannerPlugin('Copyright @ 2020 HduSy, Inc.'),
+        // environment variables
         new Webpack.DefinePlugin({
-            dev: 'true'
+            DEV: JSON.stringify('1+1'),
+            FLAG: '1+1'
         })
     ],
     // ignore the dependencies in bundleJs

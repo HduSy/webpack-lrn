@@ -3,8 +3,8 @@ const app = express()
 const webpack = require('webpack')
 const config = require('../../webpack.config')
 const compiler = webpack(config)
-const middleware = require('webpack-dev-middleware') //ÖÐ¼ä¼þ
-app.use(middleware(compiler))
+const middleware = require('webpack-dev-middleware') //middleware
+// app.use(middleware(compiler))
 
 app.get('/user/info', (req, res) => {
     res.json({
