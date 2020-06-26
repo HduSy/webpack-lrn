@@ -17,7 +17,8 @@ module.exports = {
     entry: {
         index: './src/index.js',
         home: './src/home.js',
-        other: './src/other.js'
+        other: './src/other.js',
+        react: './src/react.js'
     },
     // output config
     output: {
@@ -68,6 +69,11 @@ module.exports = {
             filename: 'other.html',
             chunks: ['other']
         }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'react.html',
+            chunks: ['react']
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/main.css'
         }),
@@ -89,7 +95,11 @@ module.exports = {
             FLAG: '1+1'
         }),
         // prevent generations of modules for import or require
-        new Webpack.IgnorePlugin(/^\.\/locale$/, /moment/)
+        new Webpack.IgnorePlugin(/^\.\/locale$/, /moment/),
+        // firstly find in manifest.json
+        new Webpack.DllReferencePlugin({
+            manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+        })
     ],
     // ignore the dependencies in bundleJs
     externals: {
@@ -134,7 +144,8 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                '@babel/preset-env'
+                                '@babel/preset-env',
+                                '@babel/preset-react'
                             ],
                             plugins: [
                                 ['@babel/plugin-proposal-class-properties', {

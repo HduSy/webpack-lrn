@@ -11,6 +11,7 @@ module.exports = smart(base, {
     devServer: {
         port: 8080,
         progress: true,
+        // open: true,
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
         // 1) proxy
