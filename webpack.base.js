@@ -11,7 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin') //copy individual files
 module.exports = {
     // or 'development'
     // mode: 'production',
-    stats: 'errors-only',
+    // stats: 'errors-only',
 
     // entry config multi files
     entry: {
@@ -87,7 +87,9 @@ module.exports = {
         new Webpack.DefinePlugin({
             DEV: JSON.stringify('1+1'),
             FLAG: '1+1'
-        })
+        }),
+        // prevent generations of modules for import or require
+        new Webpack.IgnorePlugin(/^\.\/locale$/, /moment/)
     ],
     // ignore the dependencies in bundleJs
     externals: {
@@ -147,6 +149,8 @@ module.exports = {
                 include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/
             }
-        ]
+        ],
+        // promote build performance
+        noParse: /jquery/,
     }
 }
