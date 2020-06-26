@@ -1,3 +1,4 @@
+import 'bootstrap'
 require('./index.sass')
 // import './home'
 // import './other'
@@ -12,7 +13,7 @@ document.body.appendChild(img)
 console.log('SOURCE MAP')
 // XMLHttpRequest øÁ”Ú
 const xhr = new XMLHttpRequest()
-xhr.open('GET', '/user/info', true)
+xhr.open('GET', '/api/user/info', true)
 xhr.onload = function () {
     console.log(xhr.response);
 }

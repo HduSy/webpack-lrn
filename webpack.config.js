@@ -65,7 +65,15 @@ module.exports = {
         aggregateTimeout: 600,
         ignored: /node_modules/
     },
-
+    resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')],
+        extensions: ['.js', '.css', '.json', '.vue'],
+        // mainFields: ['style', 'main'],
+        // mainFiles:[],
+        alias: {
+            bootstrap: 'bootstrap/dist/css/bootstrap.css'
+        }
+    },
     plugins: [
         // simplify creation of html serving for bundle.js
         new HtmlWebpackPlugin({
