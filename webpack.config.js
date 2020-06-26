@@ -103,7 +103,10 @@ module.exports = {
                 to: './'
             }]
         }),
-        new Webpack.BannerPlugin('Copyright @ 2020 HduSy, Inc.')
+        new Webpack.BannerPlugin('Copyright @ 2020 HduSy, Inc.'),
+        new Webpack.DefinePlugin({
+            dev: 'true'
+        })
     ],
     // ignore the dependencies in bundleJs
     externals: {

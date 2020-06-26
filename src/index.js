@@ -17,3 +17,4 @@ xhr.onload = function () {
     console.log(xhr.response);
 }
 xhr.send()
+console.log(dev);
