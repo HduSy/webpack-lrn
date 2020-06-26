@@ -7,6 +7,7 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin') //clean/remove build folder files
 const CopyWebpackPlugin = require('copy-webpack-plugin') //copy individual files or dirs to build folder
+// bannerPlugin 内置 版权声明
 module.exports = {
     // or 'development'
     mode: 'production',
@@ -79,7 +80,8 @@ module.exports = {
                 from: 'docs',
                 to: './'
             }]
-        })
+        }),
+        new Webpack.BannerPlugin('Copyright @ 2020 GitHub, Inc.')
     ],
     // ignore the dependencies in bundleJs
     externals: {
