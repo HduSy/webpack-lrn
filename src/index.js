@@ -9,4 +9,4 @@ let img = new Image()
 img.src = image
 document.body.appendChild(img)
 // source-map
-console.lo('出错了')
+console.lo('Report Wrong!')

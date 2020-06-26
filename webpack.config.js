@@ -35,6 +35,13 @@ module.exports = {
     // cheap 忽略列信息
     // inline 
     devtool: 'cheap-module-source-map',
+    watch: true,
+    watchOptions: {
+        poll: 1000,
+        aggregateTimeout: 600,
+        ignored: /node_modules/
+    },
+
     plugins: [
         // simplify creation of html serving for bundle.js
         new HtmlWebpackPlugin({
