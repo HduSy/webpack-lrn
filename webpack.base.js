@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
 const Webpack = require('webpack')
 const {
     CleanWebpackPlugin
@@ -10,37 +10,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin') //copy individual files
 // bannerPlugin 内置 版权声明
 module.exports = {
     // or 'development'
-    mode: 'production',
+    // mode: 'production',
     stats: 'errors-only',
-    // fast develop application
-    devServer: {
-        port: 8080,
-        progress: true,
-        contentBase: path.resolve(__dirname, 'dist'),
-        compress: true,
-        // 1) proxy
-        proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        },
-        // 2)simulate
-        // before: (app, server, compiler) => {
-        //     app.get('/phone/info', (req, res) => {
-        //         res.json({
-        //             brand: 'OnePlus 7T',
-        //             year: 2019,
-        //             fps: '90Hz',
-        //             price: '￥3200'
-        //         })
-        //     })
-        // }
-        // 3) webpack-dev-middleware in Server
-        // 前后端都在服务端启动 运行在3000端口
-    },
+
     // entry config multi files
     entry: {
         index: './src/index.js',
@@ -99,7 +71,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/main.css'
         }),
-        new OptimizeCssAssetsPlugin(),
         // every module inject
         new Webpack.ProvidePlugin({
             $: 'jquery'
