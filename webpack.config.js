@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const Webpack = require('webpack')
+const {
+    CleanWebpackPlugin
+} = require('clean-webpack-plugin') //clean/remove build folder files
 module.exports = {
     // or 'development'
     mode: 'production',
@@ -31,7 +34,7 @@ module.exports = {
     // module 模块间的source map
     // cheap 忽略列信息
     // inline 
-    devtool:'cheap-module-source-map',
+    devtool: 'cheap-module-source-map',
     plugins: [
         // simplify creation of html serving for bundle.js
         new HtmlWebpackPlugin({
@@ -61,7 +64,8 @@ module.exports = {
         // every module inject
         new Webpack.ProvidePlugin({
             $: 'jquery'
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
     // ignore the dependencies in bundleJs
     externals: {
