@@ -6,7 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 // npx webpack--config webpack.prod.js
 module.exports = smart(base, {
-    mode: 'development',
+    mode: 'production',
     optimization: {
         minimizer: [
             new UglifyJsPlugin()
@@ -26,7 +26,7 @@ module.exports = smart(base, {
                     chunks: 'initial',
                     minSize: 1,
                     minChunks: 2,
-                    // priority: 1
+                    priority: 1
                 },
             }
         }
