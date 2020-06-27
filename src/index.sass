@@ -1,3 +1,48 @@
-$body-color: indianred
-body 
-    background-color: $body-color    
+@import impor
+// $bg-color: indianred //如果不设置将使用默认值
+body
+    background-color: $bg-color    
+
+// #content a
+//     background: yellow
+//     &:hover
+//         background-color: white
+#content
+    width: $wd
+    height: $wd + 100px
+    background-color: $bg-color + #111
+    border: 1px solid black
+#blue-theme
+    @import blue_theme
+//混合器 如果能为一组样式一个好的命名，就值得创建一个混合器
+// 混合器 展示性样式重用
+@mixin rounded-corners()
+    -moz-border-radius: 100px
+    -webkit-border-radius: 100px
+    border-radius: 100px
+#mixins
+    // 引入混合器
+    @include rounded-corners()
+    width: 2 * $wd
+    height: 2 * $wd
+    background-color: $bg-color + #666
+// 混合器传参
+@mixin link-colors($normal,$hover,$visited)
+    color: $normal
+    &:hover $hover
+    &:visited $visited
+// 无效
+#mixins a
+    @include link-colors($normal:green,$visited:blue,$hover:red)
+// 继承 复杂选择器命中的元素所应用的样式 语义化样式重用
+.error
+    border: 1px solid red
+    background-color: #fdd
+.seriousError
+    @extend .error
+    border-width: 3px
+    
+
+    
+
+    

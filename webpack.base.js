@@ -103,17 +103,17 @@ module.exports = {
         new Webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, 'dist', 'manifest.json')
         }),
-        new Happypack({
-            id: 'css',
-            threads: 4,
-            use: [
-                // MiniCssExtractPlugin.loader,
-                'style-loader',
-                'css-loader',
-                'less-loader',
-                'sass-loader'
-            ]
-        }),
+        // new Happypack({
+        //     id: 'css',
+        //     threads: 4,
+        //     use: [
+        //         // MiniCssExtractPlugin.loader,
+        //         'style-loader',
+        //         'css-loader',
+        //         'less-loader',
+        //         'sass-loader'
+        //     ]
+        // }),
         new Happypack({
             id: 'js',
             threads: 4,
@@ -152,15 +152,35 @@ module.exports = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        limit: 280 * 1024, // when the img-size < 300Kb use base64
+                        limit: 300 * 1024, // when the img-size < 300Kb use base64
                         outputPath: '/img/'
                     }
                 }
             },
             // transform sass/less to css and pack
             {
-                test: /\.(css|less|sass)$/,
-                use: 'Happypack/loader?id=css'
+                test: /\.css$/,
+                use: [
+                    // MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ]
+            },
+            {
+                test: /\.sass$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: require.resolve('jquery'),
