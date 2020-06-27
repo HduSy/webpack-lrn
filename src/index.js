@@ -1,11 +1,11 @@
-// import 'bootstrap' //±¨´í
+// import 'bootstrap' //ï¿½ï¿½ï¿½ï¿½
 
 require('./index.sass')
 
 // import './home'
 // import './other'
 console.log('index')
-console.log($);
+// console.log($);
 
 import image from './TK18_WEB_Road_Marquees_Road.jpg'
 console.log(image);
@@ -15,7 +15,7 @@ document.body.appendChild(img)
 
 // source-map
 console.log('SOURCE MAP')
-// XMLHttpRequest ¿çÓò
+// XMLHttpRequest
 const xhr = new XMLHttpRequest()
 xhr.open('GET', '/api/user/info', true)
 xhr.onload = function () {

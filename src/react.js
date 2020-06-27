@@ -8,4 +8,4 @@ render(<h1>React JSX</h1>, window.root)
 export default 'webpack-dllPlugin'
 
 
-// npx webpack--config webpack.config.react.js
+// npx webpack --config webpack.config.react.js

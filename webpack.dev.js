@@ -30,11 +30,11 @@ module.exports = smart(base, {
         //             brand: 'OnePlus 7T',
         //             year: 2019,
         //             fps: '90Hz',
-        //             price: '£¤3200'
+        //             price: '$3200'
         //         })
         //     })
         // }
         // 3) webpack-dev-middleware in Server
-        // Ç°ºó¶Ë¶¼ÔÚ·şÎñ¶ËÆô¶¯ ÔËĞĞÔÚ3000¶Ë¿Ú
+        // å‰åç«¯éƒ½åœ¨æœåŠ¡ç«¯å¯åŠ¨ è¿è¡Œåœ¨3000ç«¯å£
     }
 })

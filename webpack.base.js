@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const Happypack = require('happypack') //18535ms=>10196ms build in parallel
 const Webpack = require('webpack')
 const {
     CleanWebpackPlugin
@@ -9,16 +9,14 @@ const {
 const CopyWebpackPlugin = require('copy-webpack-plugin') //copy individual files or dirs to build folder
 // bannerPlugin 内置 版权声明
 module.exports = {
-    // or 'development'
-    // mode: 'production',
     // stats: 'errors-only',
-
     // entry config multi files
     entry: {
         index: './src/index.js',
         home: './src/home.js',
         other: './src/other.js',
-        react: './src/react.js'
+        react: './src/react.js',
+        another: './src/another.js'
     },
     // output config
     output: {
@@ -74,6 +72,11 @@ module.exports = {
             filename: 'react.html',
             chunks: ['react']
         }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'another.html',
+            chunks: ['another']
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/main.css'
         }),
@@ -81,7 +84,7 @@ module.exports = {
         new Webpack.ProvidePlugin({
             $: 'jquery'
         }),
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [{
                 from: 'docs',
@@ -99,6 +102,37 @@ module.exports = {
         // firstly find in manifest.json
         new Webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+        }),
+        new Happypack({
+            id: 'css',
+            threads: 4,
+            use: [
+                // MiniCssExtractPlugin.loader,
+                'style-loader',
+                'css-loader',
+                'less-loader',
+                'sass-loader'
+            ]
+        }),
+        new Happypack({
+            id: 'js',
+            threads: 4,
+            use: [{
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                        '@babel/preset-react'
+                    ],
+                    plugins: [
+                        ['@babel/plugin-proposal-class-properties', {
+                            loose: true
+                        }],
+                        '@babel/plugin-transform-runtime'
+                    ]
+                }
+                // 'eslint-loader'
+            }]
         })
     ],
     // ignore the dependencies in bundleJs
@@ -126,13 +160,7 @@ module.exports = {
             // transform sass/less to css and pack
             {
                 test: /\.(css|less|sass)$/,
-                use: [
-                    // MiniCssExtractPlugin.loader,
-                    'style-loader',
-                    'css-loader',
-                    'less-loader',
-                    'sass-loader'
-                ]
+                use: 'Happypack/loader?id=css'
             },
             {
                 test: require.resolve('jquery'),
@@ -140,23 +168,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: [{
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                '@babel/preset-env',
-                                '@babel/preset-react'
-                            ],
-                            plugins: [
-                                ['@babel/plugin-proposal-class-properties', {
-                                    loose: true
-                                }],
-                                '@babel/plugin-transform-runtime'
-                            ]
-                        }
-                    },
-                    // 'eslint-loader'
-                ],
+                use: 'Happypack/loader?id=js',
                 include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/
             }
