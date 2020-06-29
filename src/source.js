@@ -1,1 +1,1 @@
-module.exports = '懒加载'
+export default '懒加载和热更新'

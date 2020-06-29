@@ -36,5 +36,6 @@ module.exports = smart(base, {
         // }
         // 3) webpack-dev-middleware in Server
         // 前后端都在服务端启动 运行在3000端口
+        hot:true
     }
 })

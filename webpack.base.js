@@ -17,7 +17,7 @@ module.exports = {
         other: './src/other.js',
         react: './src/react.js',
         another: './src/another.js',
-        lazy: './src/lazy.js'
+        lazy: './src/lazy-hot.js'
     },
     // output config
     output: {
@@ -139,7 +139,9 @@ module.exports = {
                 }
                 // 'eslint-loader'
             }]
-        })
+        }),
+        new Webpack.NamedModulesPlugin(),
+        new Webpack.HotModuleReplacementPlugin()
     ],
     // ignore the dependencies in bundleJs
     externals: {
