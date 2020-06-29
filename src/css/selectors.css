@@ -68,3 +68,39 @@ body {
 body {
     background: red url(../TK18_WEB_Road_Marquees_Road.jpg) no-repeat fixed center;
 }
+
+/* 文本 */
+p.textStyle {
+    /* 词间隔 */
+    word-spacing: 30px;
+    /* 字母间隔 */
+    letter-spacing: 0.5em;
+    text-align: center;
+    text-indent: 2cm;
+    /* 字符转换 lowercase uppercase capitalize */
+    text-transform: capitalize;
+    /* 文本修饰 none overline underline line-through blink */
+    text-decoration: line-through;
+    /* 处理tab、换行、连续空格 空白符 pre nowrap */
+    white-space: pre;
+    direction: ltr;
+    line-height: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 字体 */
+p.fontStyle {
+    /* 字体 */
+    font-family: 'Courier New', Courier, monospace;
+    /* 字体风格 italic oblique */
+    font-style: italic;
+    /* 字体变形 */
+    font-variant: small-caps;
+    /* 字体加粗 bolder lighter 100~900 bold-700 */
+    font-weight: bold;
+    /* 字体大小 默认16px 1em=16px 百分比设置默认font-size值 */
+    font-size: 1em;
+}
