@@ -1,0 +1,70 @@
+/* 后代选择器:不论嵌套层次有多深都会选择 */
+ul em {
+    color: red;
+    font-weight: bold;
+}
+
+/* 子元素选择器:只选择儿子 */
+h1>strong {
+    color: red;
+}
+
+/* 兄弟元素选择器:两者相邻且同父选择后者 */
+div.sibling li+li {
+    color: red;
+    font-weight: bold;
+}
+
+/* id选择器 */
+#redBox {
+    width: 50px;
+    height: 50px;
+    border: 2px dotted red;
+}
+
+/* 类选择器 */
+.blueBox {
+    width: 50px;
+    height: 50px;
+    border: 2px dotted blue;
+}
+
+/* 属性选择器 */
+p[title~=hello] {
+    color: red;
+}
+
+p[lang|=en] {
+    color: blue;
+}
+
+input[type=text] {
+    width: 150px;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+    font-family: Verdana, Arial;
+}
+
+input[type=button] {
+    width: 120px;
+    margin-left: 35px;
+    display: block;
+    font-family: Verdana, Arial;
+}
+
+/* 背景 */
+body {
+    background-color: black;
+    background-image: url(../TK18_WEB_Road_Marquees_Road.jpg);
+    /* 背景重复方式 no-repeat repeat-x repeat-y repeat */
+    background-repeat: repeat-x;
+    /* 文档较长时 scroll:背景随页面滚动 fixed背景固定 inherit:继承 */
+    background-attachment: fixed;
+    /* 配合background-attachment使用 top、bottom等关键字 百分比 像素值 */
+    background-position: top;
+}
+
+body {
+    background: red url(../TK18_WEB_Road_Marquees_Road.jpg) no-repeat fixed center;
+}

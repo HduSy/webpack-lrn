@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3</title>
+    <!-- 外联样式 -->
+    <link rel="stylesheet" href="./selectors.css">
+    <!-- 内部样式 -->
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <!-- 内联样式 -->
+    <h3 style="">后代选择器</h3>
+    <div>
+        <ul>
+            <li>List item 1
+                <ol>
+                    <li>List item 1-1</li>
+                    <li>List item 1-2</li>
+                    <li>List item 1-3
+                        <ol>
+                            <li>List item 1-3-1</li>
+                            <li>List item <em>1-3-2</em></li>
+                            <li>List item 1-3-3</li>
+                        </ol>
+                    </li>
+                    <li>List item 1-4</li>
+                </ol>
+            </li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+    </div>
+    <h3>子元素选择器</h3>
+    <div>
+        <h1>This is <strong>very</strong> <strong>very</strong> important.</h1>
+        <h1>This is <em>really <strong>very</strong></em> important.</h1>
+    </div>
+    <h3>兄弟元素选择器</h3>
+    <div class="sibling">
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ul>
+        <ol>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ol>
+    </div>
+    <h3>id选择器</h3>
+    <div id="redBox"></div>
+    <h3>类选择器</h3>
+    <div class="blueBox"></div>
+    <h3>属性选择器</h3>
+    <div>
+        <p lang="en">en</p>
+        <p lang="en-us">en-us</p>
+        <p title="hello world">hello world</p>
+        <p title="student hello">student hello</p>
+        <form action="" name="input" method="GET" id="input">
+            <input type="text" name="Name" value="Bill" size="20" />
+            <input type="text" name="Name" value="Gates" size="20" />
+            <input type="button" value="Example Button" />
+        </form>
+    </div>
+</body>
+
+</html>
