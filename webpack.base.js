@@ -16,7 +16,8 @@ module.exports = {
         home: './src/home.js',
         other: './src/other.js',
         react: './src/react.js',
-        another: './src/another.js'
+        another: './src/another.js',
+        lazy: './src/lazy.js'
     },
     // output config
     output: {
@@ -76,6 +77,11 @@ module.exports = {
             template: './src/index.html',
             filename: 'another.html',
             chunks: ['another']
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'lazy.html',
+            chunks: ['lazy']
         }),
         new MiniCssExtractPlugin({
             filename: 'css/main.css'
