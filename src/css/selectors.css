@@ -55,8 +55,8 @@ input[type=button] {
 
 /* 背景 */
 body {
-    background-color: black;
-    background-image: url(../TK18_WEB_Road_Marquees_Road.jpg);
+    background-color: white;
+    /* background-image: url(../TK18_WEB_Road_Marquees_Road.jpg); */
     /* 背景重复方式 no-repeat repeat-x repeat-y repeat */
     background-repeat: repeat-x;
     /* 文档较长时 scroll:背景随页面滚动 fixed背景固定 inherit:继承 */
@@ -66,7 +66,7 @@ body {
 }
 
 body {
-    background: red url(../TK18_WEB_Road_Marquees_Road.jpg) no-repeat fixed center;
+    /* background: red url(../TK18_WEB_Road_Marquees_Road.jpg) no-repeat fixed center; */
 }
 
 /* 文本 */
@@ -103,4 +103,53 @@ p.fontStyle {
     font-weight: bold;
     /* 字体大小 默认16px 1em=16px 百分比设置默认font-size值 */
     font-size: 1em;
+}
+/* 链接 */
+/* 列表 */
+ul{
+    /* 列表项样式 */
+    list-style-type: square; 
+    /* list-style-image: url(../TK18_WEB_Road_Marquees_Road.jpg); */
+    /* 列表标志在列表项内or外 */
+    list-style-position: outside;
+}
+ul{
+    /* list-style: url(../TK18_WEB_Road_Marquees_Road.jpg) square inside; */
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    /* 文本对齐 */
+    text-align: center;
+    vertical-align: top;
+}
+th{
+    /* 高度 */
+    height: 100px;
+}
+td{
+    /* 内边距 */
+    padding: 15px;
+    background-color: green;
+    color: white;
+}
+table{
+    border-collapse: separate;
+    border-spacing: 10px 30px;
+    empty-cells: hide;
+}
+caption{
+    caption-side: bottom;
+}
+/* 轮廓 style color width */
+h3{
+    outline: yellow dotted 10px;
+}
+/* 边框:均可单独设置上右下左四个方向的值 style color width */
+p{
+    /* border-style: none; */ /* 默认项必须设置否则宽度设置项失效 */
+    border-style: dotted solid dashed double;
+    border-width: thin medium thick 1em;
+    border-color: red rebeccapurple blue green;
 }
