@@ -303,3 +303,7 @@ body {
     /* border-box padding-box content-box */
     background-origin: border-box;
 }
+.text{
+    text-shadow: 0 0 red;
+    
+}
