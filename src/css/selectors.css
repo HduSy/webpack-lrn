@@ -30,12 +30,34 @@ div.sibling li+li {
 }
 
 /* 属性选择器 */
+p[title=hello] {
+    /* 精确匹配 */
+    color: blue;
+}
+
 p[title~=hello] {
+    /* 词列表匹配 */
     color: red;
 }
 
-p[lang|=en] {
+p[title^=hello] {
+    /* 开头 */
     color: blue;
+}
+
+p[title$=hello] {
+    /* 结尾 */
+    color: red;
+}
+
+p[title*=hello] {
+    /* 包含 */
+    color: blue;
+}
+
+p[lang|=en] {
+    /* 开头 */
+    color: red;
 }
 
 input[type=text] {
@@ -51,6 +73,43 @@ input[type=button] {
     margin-left: 35px;
     display: block;
     font-family: Verdana, Arial;
+}
+
+/* 伪类选择器 */
+a:link,
+a:visited,
+a:hover,
+a:visited {
+    /* 锚伪类 */
+}
+
+input:focus {}
+
+p:lang(en) {}
+
+p:first-child {
+    /* 作为第一个孩子的元素p */
+}
+
+/* 伪元素 */
+p::first-letter {}
+
+p::first-line {}
+
+p::before {
+    /* 元素前添加内容 */
+}
+
+p::after {
+    /* 元素后添加内容 */
+}
+
+/* 对齐 */
+p {
+    margin: auto;
+    position: absolute;
+    float: left;
+
 }
 
 /* 背景 */
@@ -104,19 +163,24 @@ p.fontStyle {
     /* 字体大小 默认16px 1em=16px 百分比设置默认font-size值 */
     font-size: 1em;
 }
+
 /* 链接 */
 /* 列表 */
-ul{
+ul {
     /* 列表项样式 */
-    list-style-type: square; 
+    list-style-type: square;
     /* list-style-image: url(../TK18_WEB_Road_Marquees_Road.jpg); */
     /* 列表标志在列表项内or外 */
     list-style-position: outside;
 }
-ul{
+
+ul {
     /* list-style: url(../TK18_WEB_Road_Marquees_Road.jpg) square inside; */
 }
-table,th,td{
+
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
     width: 100%;
@@ -124,32 +188,76 @@ table,th,td{
     text-align: center;
     vertical-align: top;
 }
-th{
+
+th {
     /* 高度 */
     height: 100px;
 }
-td{
+
+td {
     /* 内边距 */
     padding: 15px;
     background-color: green;
     color: white;
 }
-table{
+
+table {
     border-collapse: separate;
     border-spacing: 10px 30px;
     empty-cells: hide;
 }
-caption{
+
+caption {
     caption-side: bottom;
 }
+
 /* 轮廓 style color width */
-h3{
+h3 {
     outline: yellow dotted 10px;
 }
+
 /* 边框:均可单独设置上右下左四个方向的值 style color width */
-p{
-    /* border-style: none; */ /* 默认项必须设置否则宽度设置项失效 */
+p {
+    /* border-style: none; */
+    /* 默认项必须设置否则宽度设置项失效 */
     border-style: dotted solid dashed double;
     border-width: thin medium thick 1em;
     border-color: red rebeccapurple blue green;
+}
+
+/* 定位 */
+div.outter {
+    width: 300px;
+    height: 300px;
+    background-color: blueviolet;
+    margin-top: 30px;
+}
+
+div.inner {
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+    /* 外边距合并为30px */
+    margin-top: 20px;
+}
+
+div.outter {
+    position: relative;
+    overflow: auto;
+    vertical-align: bottom;
+}
+
+div.outter>span {
+    display: block;
+    /* 普通文档流 相对定位 相对于初始位置 初始位置仍占据空间 */
+    position: relative;
+    left: 100px;
+}
+
+div.outter>span {
+    display: block;
+    /* 绝对定位 脱离文档流 相对于最近已定位的祖先元素 若没有那么'相对于'初始包含块 */
+    position: absolute;
+    top: 100px;
+    left: 50%;
 }
