@@ -280,3 +280,26 @@ body {
     filter: alpha(opacity=70);
     background-repeat: repeat-y;
 }
+
+/* CSS3 边框 */
+.border {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px gray;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+/* 背景 */
+.background {
+    /* 设置多图像 */
+    background-image: url(), url();
+    /* 设置宽度 相对父元素 */
+    background-size: 200px 50%;
+    /* border-box padding-box content-box */
+    background-origin: border-box;
+}
