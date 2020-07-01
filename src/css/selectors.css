@@ -302,6 +302,7 @@ body {
     background-size: 200px 50%;
     /* border-box padding-box content-box */
     background-origin: border-box;
+<<<<<<< HEAD
     background-clip: content-box;
 }
 
@@ -378,4 +379,10 @@ div {
     column-rule: 2px dotted red;
     /* 元素横跨所有列 */
     column-span: all;
+=======
+}
+.text{
+    text-shadow: 0 0 red;
+    
+>>>>>>> 5000a222019fc37bbfe22b2e114c3d06c7892bb4
 }
