@@ -226,22 +226,21 @@ p {
 }
 
 /* 定位 */
-div.outter {
+/* div.outter {
     width: 300px;
     height: 300px;
     background-color: blueviolet;
     margin-top: 30px;
-}
+} */
 
-div.inner {
+/* div.inner {
     width: 100px;
     height: 100px;
     background-color: greenyellow;
-    /* 外边距合并为30px */
     margin-top: 20px;
-}
+} */
 
-div.outter {
+/* div.outter {
     position: relative;
     overflow: auto;
     vertical-align: bottom;
@@ -249,7 +248,7 @@ div.outter {
 
 div.outter:hover {
     background-color: goldenrod;
-}
+} */
 
 div.outter>span {
     display: block;
@@ -268,13 +267,14 @@ div.outter>span {
 
 div.outter>span {
     /* 固定定位 浏览器窗口 */
-    position: fixed;
-    left: 50%;
-    top: 50%;
+    /* position: fixed; */
+    /* left: 50%; */
+    /* top: 50%; */
+    white-space: nowrap;
 }
 
 body {
-    background: url(../TK18_WEB_Road_Marquees_Road.jpg);
+    /* background: url(../TK18_WEB_Road_Marquees_Road.jpg); */
     opacity: 0.7;
     /* 针对 IE8 以及更早的版本 */
     filter: alpha(opacity=70);
@@ -302,4 +302,80 @@ body {
     background-size: 200px 50%;
     /* border-box padding-box content-box */
     background-origin: border-box;
+    background-clip: content-box;
+}
+
+@font-face {
+    font-family: myFontName;
+    src: url('Sansation_Light.ttf');
+}
+
+@font-face {
+    font-family: myBoldFontName;
+    src: url('Sansation_Bold.ttf'),
+        url('Sansation_Bold.eot');
+    font-weight: bold;
+}
+
+p {
+    font-family: myFontName;
+}
+
+/* 2D变换 */
+.transform {
+    /* translate\rotate\scale\skew */
+    transform: rotate(30deg);
+}
+
+.outter {
+    width: 100px;
+    height: 100px;
+    background-color: #6a5acd8c;
+    /* 过渡 */
+    transition: width 1s ease-in 1s;
+}
+
+.inner {
+    transform: rotate(45deg);
+    width: 100%;
+    height: 100%;
+    background-color: #6a5acdeb;
+    transform-origin: 50px 100px;
+}
+
+div.outter:hover {
+    width: 200px;
+    animation: myAnimation 1s;
+}
+
+/* 动画 */
+@keyframes myAnimation {
+    from {
+        background-color: red;
+    }
+
+    to {
+        background-color: yellow;
+    }
+}
+
+div.inner {
+    animation-name: myAnimation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 1s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+div {
+    /* 列数 */
+    column-count: 3;
+    /* 列间距 */
+    column-gap: 10px;
+    /* 列间宽度样式颜色 */
+    column-rule: 2px dotted red;
+    /* 元素横跨所有列 */
+    column-span: all;
 }
